@@ -4,9 +4,9 @@ from conans import ConanFile, CMake, tools
 class DateConan(ConanFile):
     name = "date"
     version = "2.4"
-    license = "<Put the package license here>"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Date here>"
+    license = "MIT"
+    url = "https://github.com/StiventoUser/conan-date"
+    description = "A package for HowardHinnant's date"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
