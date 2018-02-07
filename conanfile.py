@@ -13,6 +13,10 @@ class DateConan(ConanFile):
     generators = "cmake"
     requires = "libcurl/7.56.1@bincrafters/stable"
 
+    def configure(self):
+        if self.settings.compiler.libcxx == "libstdc++":
+            raise Exception("This package is only compatible with libstdc++11")
+
     def source(self):
         self.run("git clone https://github.com/HowardHinnant/date")
         with tools.chdir("date"):
