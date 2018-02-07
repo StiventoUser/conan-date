@@ -14,7 +14,7 @@ class DateConan(ConanFile):
     requires = "libcurl/7.56.1@bincrafters/stable"
 
     def configure(self):
-        if self.settings.compiler.libcxx == "libstdc++":
+        if self.settings.os == "Linux" and self.settings.compiler.libcxx == "libstdc++":
             raise Exception("This package is only compatible with libstdc++11")
 
     def source(self):
@@ -48,5 +48,5 @@ conan_basic_setup()''')
 
     def package_info(self):
         self.cpp_info.libs = ["tz"]
-        if self.settings.compiler == "gcc" and self.settings.compiler.libcxx != "libstdc++":
+        if self.settings.os == "Linux" and self.settings.compiler == "gcc" and self.settings.compiler.libcxx != "libstdc++":
             self.cpp_info.cppflags.append("-std=c++11")
