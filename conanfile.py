@@ -49,4 +49,4 @@ conan_basic_setup()''')
     def package_info(self):
         self.cpp_info.libs = ["tz"]
         if self.settings.compiler == "gcc" and self.settings.compiler.libcxx != "libstdc++":
-            self.cpp_info.cppflags = "-std=c++11"
+            self.cpp_info.cppflags.append("-std=c++11")
