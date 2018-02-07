@@ -16,6 +16,8 @@ class DateConan(ConanFile):
     def configure(self):
         if self.settings.compiler.libcxx == "libstdc++":
             raise Exception("This package is only compatible with libstdc++11")
+        else:
+            self.cpp_info.cppflags = "-std=c++11"
 
     def source(self):
         self.run("git clone https://github.com/HowardHinnant/date")
