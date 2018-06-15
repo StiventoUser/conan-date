@@ -12,7 +12,7 @@ The packages generated with this **conanfile** can be found in [Bintray](https:/
 
 ### Basic setup
 
-    $ conan install sqlpp11/0.54@vkrapivin/testing
+    $ conan install date/0.54@vkrapivin/testing
 
 ### Project setup
 
