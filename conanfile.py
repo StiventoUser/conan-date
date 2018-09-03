@@ -57,3 +57,6 @@ conan_basic_setup()''')
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
+
+        if self.settings.os == "Linux" and self.settings.compiler == "gcc" and self.settings.compiler.libcxx != "libstdc++":
+            self.cpp_info.cppflags.append("-std=c++11")
