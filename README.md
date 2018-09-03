@@ -1,6 +1,6 @@
 # conan-date
 
-[ ![Download](https://api.bintray.com/packages/vkrapivin/conan/date%3Avkrapivin/images/download.svg) ](https://bintray.com/vkrapivin/conan/date%3Avkrapivin/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/vkrapivin/conan/date%3Avkrapivin/images/download.svg?version=2.4.1%3Atesting) ](https://bintray.com/vkrapivin/conan/date%3Avkrapivin/2.4.1%3Atesting/link)
 [![Build Status](https://travis-ci.org/StiventoUser/conan-date.svg?branch=testing%2F2.4)](https://travis-ci.org/StiventoUser/conan-date)
 [![Build status](https://ci.appveyor.com/api/projects/status/nqjr5e8s4f3h9oag?svg=true)](https://ci.appveyor.com/project/StiventoUser/conan-date)
 
@@ -19,7 +19,7 @@ The packages generated with this **conanfile** can be found in [Bintray](https:/
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    date/2.4@vkrapivin/testing
+    date/2.4.1@vkrapivin/testing
 
     [generators]
     cmake
@@ -46,7 +46,7 @@ The following command both runs all the steps of the conan file, and publishes t
 
 ## Upload
 
-    $ conan upload date/2.4@vkrapivin/testing --all -r vkrapivin
+    $ conan upload date/2.4.1@vkrapivin/testing --all -r vkrapivin
 
 ## License
 [LICENSE_TYPE](LICENSE)
