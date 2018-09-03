@@ -1,6 +1,6 @@
 # conan-date
 
-[ ![Download](https://api.bintray.com/packages/vkrapivin/conan/date%3Avkrapivin/images/download.svg) ](https://bintray.com/vkrapivin/conan/date%3Avkrapivin/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/vkrapivin/conan/date%3Avkrapivin/images/download.svg?version=2.4%3Atesting) ](https://bintray.com/vkrapivin/conan/date%3Avkrapivin/2.4%3Atesting/link)
 [![Build Status](https://travis-ci.org/StiventoUser/conan-date.svg?branch=testing%2F2.4)](https://travis-ci.org/StiventoUser/conan-date)
 [![Build status](https://ci.appveyor.com/api/projects/status/nqjr5e8s4f3h9oag?svg=true)](https://ci.appveyor.com/project/StiventoUser/conan-date)
 
