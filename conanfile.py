@@ -3,13 +3,22 @@ from conans import ConanFile, CMake, tools
 
 class DateConan(ConanFile):
     name = "date"
-    version = "2.4"
+    version = "2.4.1"
     license = "MIT"
     url = "https://github.com/StiventoUser/conan-date"
     description = "A package for HowardHinnant's date"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {
+        "shared": [True, False],
+        "use_system_tz_db": [True, False],
+        "use_tz_db_in_dot": [True, False],
+        "disable_string_view": [True, False]
+    }
+    default_options = \
+        "shared=False",\
+        "use_system_tz_db=False",\
+        "use_tz_db_in_dot=False",\
+        "disable_string_view=False"
     generators = "cmake"
     requires = "libcurl/7.56.1@bincrafters/stable"
 
@@ -30,13 +39,13 @@ conan_basic_setup()''')
     def build(self):
         cmake = CMake(self)
         cmake.definitions["CURL_ROOT_DIR"] = self.deps_cpp_info["libcurl"].rootpath
-        cmake.definitions["BUILD_TZ_STATIC"] = "OFF" if self.options.shared else "ON"
+        cmake.definitions["USE_SYSTEM_TZ_DB"] = "ON" if self.options.use_system_tz_db else "OFF"
+        cmake.definitions["USE_TZ_DB_IN_DOT"] = "ON" if self.options.use_tz_db_in_dot else "OFF"
+        cmake.definitions["BUILD_SHARED_LIBS"] = "ON" if self.options.shared else "OFF"
+        cmake.definitions["ENABLE_DATE_TESTING"] = "OFF"
+        cmake.definitions["DISABLE_STRING_VIEW"] = "ON" if self.options.disable_string_view else "OFF"
         cmake.configure(source_folder="date")
         cmake.build()
-
-        # Explicit way:
-        # self.run('cmake %s/hello %s' % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
         self.copy("*.h", dst="include", src="date/include")
@@ -47,6 +56,4 @@ conan_basic_setup()''')
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["tz"]
-        if self.settings.os == "Linux" and self.settings.compiler == "gcc" and self.settings.compiler.libcxx != "libstdc++":
-            self.cpp_info.cppflags.append("-std=c++11")
+        self.cpp_info.libs = tools.collect_libs(self)
